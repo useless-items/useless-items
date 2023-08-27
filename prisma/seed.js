@@ -44,7 +44,7 @@ const main = async () => {
       isAdmin: false
     }
   })
-  const product1 = prisma.products.create({
+  const product1 = prisma.product.create({
     data: {
       productName: "Inferno Knuckles",
       stock: 50,
@@ -54,7 +54,7 @@ const main = async () => {
       pennies: 30000
     }
   })
-  const product2 = prisma.products.create({
+  const product2 = prisma.product.create({
     data: {
       productName: "Dinosaur taco holder",
       stock: 3,
@@ -64,7 +64,7 @@ const main = async () => {
       pennies: 20000
     }
   })
-  const product3 = prisma.products.create({
+  const product3 = prisma.product.create({
     data: {
       productName: "Mobile toilet paper",
       stock: 8000,
@@ -74,7 +74,7 @@ const main = async () => {
       pennies: 40000
     }
   })
-  const product4 = prisma.products.create({
+  const product4 = prisma.product.create({
     data: {
       productName: "Nutty bandit",
       stock: 1,
@@ -84,7 +84,7 @@ const main = async () => {
       pennies: 50000
     }
   })
-  const product5 = prisma.products.create({
+  const product5 = prisma.product.create({
     data: {
       productName: "Totally normal bank",
       stock: 500,
@@ -94,7 +94,7 @@ const main = async () => {
       pennies: 80000
     }
   })
-  const product6 = prisma.products.create({
+  const product6 = prisma.product.create({
     data: {
       productName: "Yoedling pickle",
       stock: 700,
