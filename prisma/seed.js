@@ -51,7 +51,7 @@ const main = async () => {
       description: "For when you need to punch someone in the dark.",
       productsImgUrl: "infernoknucks.jpg",
       productRating: 2,
-      price: 300
+      pennies: 30000
     }
   })
   const product2 = prisma.products.create({
@@ -61,7 +61,7 @@ const main = async () => {
       description: "Need to impress someone special? This is how you do it.",
       productsImgUrl: "dinotaco.jpg",
       productRating: 1,
-      price: 124
+      pennies: 20000
     }
   })
   const product3 = prisma.products.create({
@@ -71,7 +71,7 @@ const main = async () => {
       description: "For when your nose is runny or you have taco bell, we wont ask.",
       productsImgUrl: "mobilepaper.jpg",
       productRating: 3,
-      price: 7
+      pennies: 40000
     }
   })
   const product4 = prisma.products.create({
@@ -81,7 +81,7 @@ const main = async () => {
       description: "Finally found the culprit stealing my peanut butter.",
       productsImgUrl: "racoon.jpg",
       productRating: 10,
-      price: 50000
+      pennies: 50000
     }
   })
   const product5 = prisma.products.create({
@@ -91,7 +91,7 @@ const main = async () => {
       description: "If you need to save some extra change, this is for you.",
       productsImgUrl: "weirdbank.jpg",
       productRating: 1,
-      price: 13
+      pennies: 80000
     }
   })
   const product6 = prisma.products.create({
@@ -101,7 +101,7 @@ const main = async () => {
       description: "Can't afford a pickle rick? This is the next best thing!",
       productsImgUrl: "yoedlepickle.jpg",
       productRating: 2,
-      price: 300
+      pennies: 10000
     }
   })
 }
