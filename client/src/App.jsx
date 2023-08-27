@@ -6,9 +6,9 @@ const App = () => {
  
   return (
     <>
-      <div id='navbar'>
-        <Link to='/'><button className='home'>Home</button></Link>
-        <Link to='/register'><button className='register'>Register</button></Link>
+      <div id='navbar' className='navbar'>
+        <Link to='/' className='navbar-link'><button className='home'>Home</button></Link>
+        <Link to='/register' className='navbar-link'><button className='register'>Register</button></Link>
       </div>
       
       <Routes>
