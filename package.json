@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node ./server/index.js",
+    "server:dev": "nodemon ./server/index.js",
+    "client:build": "cd client && npm run build ",
+    "seed": "npx prisma migrate reset "
+  },
+  "prisma": {
+    "seed": "node ./prisma/seed.js"
   },
   "keywords": [],
   "author": "",

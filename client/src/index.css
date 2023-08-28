@@ -1,35 +1,93 @@
-/* App.jsx */
-.navbar {
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+#navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 10px;
-    background-color: #003478
-    ;
+    padding: 50px;
+    background-color: lightslategray;
+    transition: background-color 0.5s ease; /* Add a transition to background-color */
+    animation: colorCycle 10s infinite; /* Add an animation for color cycling */
 }
 
-.navbar-link {
-    margin: 0 10px;
-    text-decoration: none;
+/* Define keyframes for color cycling */
+@keyframes colorCycle {
+    0% { background-color: lightslategray; } /* Start with the initial color */
+    25% { background-color: indianred; } /* Transition to a different color */
+    50% { background-color: gold; } /* Transition to another color */
+    75% { background-color: darkolivegreen; } /* Transition to another color */
+    100% { background-color: lightslategray; } /* Return to the initial color */
 }
+
 
 
 /* Register.jsx */
-.register-form {
-    display: flex;
-    flex-direction: column;
+#register {
     align-items: center;
     justify-content: center;
-    height: 40vh;
     background-color: #228B22;
 }
 
-.register-category {
-    margin-top: 15px;
+body {
+    background-image: url(oldwest.jpg);
+    background-size: cover;
 }
 
-.register-submit-container {
+
+#container {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-section > div {
+    width: 100%;
     display: flex;
-    margin-top: 15px;
+    align-items: center;
     justify-content: center;
+  }
+
+#HomeHeading {
+    color:wheat;
+    text-decoration: underline;
+    background-color: saddlebrown;
+}
+
+.linkstyle {
+    color: black;
+    font-family: 'Lobster', cursive;
+    font-size: x-large;
+}
+
+#MainHeading {
+    width: 600px;
+    height: 150px;
+    background: linear-gradient(to bottom, #FFD700, #CD853F);
+    border: 5px solid #8B4513;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lobster', cursive;
+    font-size: xx-large;
+    color: #8B4513;
+    white-space: nowrap;
+}
+
+#MainHeading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#FindItems {
+    font-size: xx-large;
+    background-color: #228B22;
+}
+
+input[type="text"] {
+    width: 50%; /* Make the search bar expand to full width */
+    padding: 12px; /* Adjust padding to increase the height */
+    font-size: 14px;
 }
