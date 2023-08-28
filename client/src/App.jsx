@@ -1,8 +1,10 @@
+
 import { Routes, Route, Link } from "react-router-dom"
 import Home from "./Components/Home.jsx"
 import User from "./Components/User.jsx"
 import Cart from "./Components/Cart.jsx"
 import Register from "./Components/Register.jsx"
+
 const App = () => {
  
   return (
@@ -33,6 +35,7 @@ const App = () => {
         </div>
       </div>
      </>
+
   )
 }
 
