@@ -11,8 +11,8 @@ const main = async () => {
       email: "Jdus@email.com",
       username: "JDus123",
       password: await bcrypt.hash("joshPassword123", 10),
-      isAdmin: true
-    }
+      isAdmin: true,
+    },
   })
   const user2 = await prisma.user.create({
     data: {
@@ -49,7 +49,7 @@ const main = async () => {
       productName: "Inferno Knuckles",
       stock: 50,
       description: "For when you need to punch someone in the dark.",
-      productsImgUrl: "infernoknucks.jpg",
+      productImgUrl: "infernoknucks.jpg",
       productRating: 2,
       pennies: 30000,
       userId: user2.id
@@ -60,7 +60,7 @@ const main = async () => {
       productName: "Dinosaur taco holder",
       stock: 3,
       description: "Need to impress someone special? This is how you do it.",
-      productsImgUrl: "dinotaco.jpg",
+      productImgUrl: "dinotaco.jpg",
       productRating: 1,
       pennies: 20000,
       userId: user.id
@@ -71,7 +71,7 @@ const main = async () => {
       productName: "Mobile toilet paper",
       stock: 8000,
       description: "For when your nose is runny or you have taco bell, we wont ask.",
-      productsImgUrl: "mobilepaper.jpg",
+      productImgUrl: "mobilepaper.jpg",
       productRating: 3,
       pennies: 40000,
       userId: user1.id
@@ -82,7 +82,7 @@ const main = async () => {
       productName: "Nutty bandit",
       stock: 1,
       description: "Finally found the culprit stealing my peanut butter.",
-      productsImgUrl: "racoon.jpg",
+      productImgUrl: "racoon.jpg",
       productRating: 10,
       pennies: 50000,
       userId: user.id
@@ -93,7 +93,7 @@ const main = async () => {
       productName: "Totally normal bank",
       stock: 500,
       description: "If you need to save some extra change, this is for you.",
-      productsImgUrl: "weirdbank.jpg",
+      productImgUrl: "weirdbank.jpg",
       productRating: 1,
       pennies: 80000,
       userId: user2.id
@@ -104,7 +104,7 @@ const main = async () => {
       productName: "Yoedling pickle",
       stock: 700,
       description: "Can't afford a pickle rick? This is the next best thing!",
-      productsImgUrl: "yoedlepickle.jpg",
+      productImgUrl: "yoedlepickle.jpg",
       productRating: 2,
       pennies: 10000,
       userId: user3.id
