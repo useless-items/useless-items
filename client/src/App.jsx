@@ -9,28 +9,28 @@ const App = () => {
     <>
       <div id="container">
         <h1></h1>
-      <div id="navbar">
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="/login">
-          User Login
-        </Link>
-        <Link to="/cart">
-          Shopping Cart
-        </Link>
-        <Link to="/register">
-          New User Registration
-        </Link>
-      </div>
-      <div id="main-section">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<User />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </div>
+        <div id="navbar">
+          <Link to="/">
+            Home
+          </Link>
+          <Link to="/login">
+            User Login
+          </Link>
+          <Link to="/cart">
+            Shopping Cart
+          </Link>
+          <Link to="/register">
+            New User Registration
+          </Link>
+        </div>
+        <div id="main-section">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<User />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
       </div>
      </>
   )
