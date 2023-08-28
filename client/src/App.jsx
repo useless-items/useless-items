@@ -19,7 +19,7 @@ const App = () => {
         <Link to="/cart">
           Shopping Cart
         </Link>
-        <Link to="/">
+        <Link to="/register">
           New User Registration
         </Link>
       </div>
