@@ -28,6 +28,7 @@ const Register = () => {
 
         setSuccess({ status: false, message: '' });
 
+        // formData for TESTING ONLY; Delete when authentication works.
         const formData = {
             firstName: firstName,
             lastName: lastName,
