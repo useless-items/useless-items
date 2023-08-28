@@ -18,8 +18,7 @@ model User {
   username String @db.VarChar(50) @unique
   password String @db.VarChar(50)
   isAdmin Boolean
-  productId Int
-  product Product @relation(fields: [productId], references: [id])
+  product Product[]
   shoppingCarts ShoppingCart[]
 }
 
@@ -31,7 +30,8 @@ model Product {
   productImgUrl String @db.VarChar(255)
   productRating Int @db.SmallInt
   pennies Int
-  users User[]
+  userId Int
+  user User @relation(fields: [userId], references: [id])
   shoppingCartProducts ShoppingCartProduct[]
 }
 
