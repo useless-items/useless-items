@@ -21,7 +21,7 @@ const main = async () => {
       email: "JTP@email.com",
       username: "JPric123",
       password: await bcrypt.hash("jtPassword123", 10),
-      isAdmin: false
+      isAdmin: true
     }
   })
   const user3 = await prisma.user.create({
@@ -41,7 +41,7 @@ const main = async () => {
       email: "EdJ@email.com",
       username: "EDJ123",
       password: await bcrypt.hash("eddiePassword123", 10),
-      isAdmin: false
+      isAdmin: true
     }
   })
   const product1 = await prisma.product.create({
