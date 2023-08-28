@@ -29,6 +29,7 @@ const Register = () => {
 
         setSuccess({ status: false, message: '' });
 
+        // FOR TESTING ONLY, DELETE IN FINAL PRODUCTION
         const formData = {
             firstName: firstName,
             lastName: lastName,
