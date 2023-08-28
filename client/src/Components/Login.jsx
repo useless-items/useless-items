@@ -19,7 +19,8 @@ const Login = () => {
         setError({ status: false, message: ''});
 
         try {
-            const response = await fetch('/api/login', {
+            //This is a temporary fetch login, please change as backend is fleshed out.
+            const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
