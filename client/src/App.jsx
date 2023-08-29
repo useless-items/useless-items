@@ -3,8 +3,10 @@ import Home from "./Components/Home.jsx"
 import Login from "./Components/Login.jsx"
 import Cart from "./Components/Cart.jsx"
 import Register from "./Components/Register.jsx"
+import { useState } from "react"
 
 const App = () => {
+  const [token, setToken] = useState("");
  
   return (
     <>
@@ -29,9 +31,9 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setToken={setToken}/>} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register setToken={setToken} />} />
           </Routes>
         </div>
       </div>

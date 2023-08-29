@@ -35,16 +35,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  try {
-    const user = await prisma.user.create({
-      data: req.body,
-    });
-    res.send(user);
-  } catch (error) {
-    res.send(error);
-  }
-});
 
 router.put("/:id", async (req, res) => {
   try {
