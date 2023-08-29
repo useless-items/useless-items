@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/auth', require('./auth'))
+app.use('/api', require('./api'))
 
 
 app.listen(PORT, (err) => {
