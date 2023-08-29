@@ -44,11 +44,6 @@ const Login = () => {
     return (
         <>
             <div id='login-page'>
-                {/* Add Home Button */}
-                <div>
-                    <Link to='/'>Home</Link>
-                </div>
-
                 <div>
                     <h1>Login Page</h1>
                 </div>
