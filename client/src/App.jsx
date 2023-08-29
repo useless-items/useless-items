@@ -5,8 +5,11 @@ import Login from './Components/Login.jsx';
 import Cart from './Components/Cart.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
+import { useState } from 'react';
 
 const App = () => {
+  const [token, setToken] = useState("");
+
   return (
     <>
       <div id="container">
@@ -30,23 +33,9 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            {/* Pass cartItems and totalPrice to Cart component */}
-            <Route
-              path="/cart"
-              element={
-                <Cart
-                  cartItems={dummyCartItems}
-                  totalPrice={dummyTotalPrice}
-                />
-              }
-            />
-            {/* Route for the Checkout component */}
-            <Route
-            path="/checkout"
-            element={<Checkout totalPrice={dummyTotalPrice} />}
-            />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login setToken={setToken}/>} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/register" element={<Register setToken={setToken} />} />
           </Routes>
         </div>
       </div>
