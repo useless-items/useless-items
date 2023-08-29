@@ -17,7 +17,7 @@ model User {
   email String @db.VarChar(50)
   username String @db.VarChar(50) @unique
   password String @db.VarChar(50)
-  isAdmin Boolean
+  isAdmin Boolean?
   product Product[]
   shoppingCarts ShoppingCart[]
 }
