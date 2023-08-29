@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = ({ cartItems, totalPrice }) => {
   return (
@@ -17,12 +18,15 @@ const Cart = ({ cartItems, totalPrice }) => {
             </div>
           ))}
         </div>
+      </section>
 
         <div className='total'>
-          <h4>Total Price: ${totalPrice}</h4>
+        <h4>Total Price: ${totalPrice}</h4>
+        {/* /* Link to the Checkout component */}
+        <Link to="/checkout" className="linkstyle">
           <button>Check Out</button>
-        </div>
-      </section>
+        </Link>
+      </div>
     </>
   );
 };
