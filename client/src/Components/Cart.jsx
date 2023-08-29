@@ -1,6 +1,55 @@
-import React from 'react';
 
-const Cart = ({ cartItems, totalPrice }) => {
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+const Cart = () => {
+    const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+      const fetchCartItems = async () => {
+        // Place seed data here
+        // await main();
+
+        const seedProducts = [
+          {
+              id: 1,
+              productName: 'Inferno Knuckles',
+              productImgUrl: 'infernoknucks.jpg',
+              pennies: 30000,
+          },
+          {
+              id: 2,
+              productName: 'Dinosaur taco holder',
+              productImgUrl: 'dinotaco.jpg',
+              pennies: 20000,
+          },
+          {
+              id: 3,
+              productName: 'Something Extra',
+              productImgUrl: 'somethingextra.jpg',
+              pennies: 18000,
+          }
+        ];
+        setCartItems(seedProducts);
+      };
+
+      fetchCartItems();
+    }, []);
+
+    useEffect(() => {
+      const calculateTotalPrice = () => {
+        const total = cartItems.reduce((accumulator, product) => accumulator + (product.pennies / 100), 0);
+        setTotalPrice(total);
+      };
+
+      calculateTotalPrice();
+    }, [cartItems]);
+
+
+
+
+
   return (
     <>
       <div>
