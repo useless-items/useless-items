@@ -1,20 +1,28 @@
 {
   "name": "useless-items",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node ./server/index.js",
+    "server:dev": "nodemon ./server/index.js",
+    "client:build": "cd client && npm run build ",
+    "seed": "npx prisma migrate reset "
+  },
+  "prisma": {
+    "seed": "node ./prisma/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.2.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
     "prisma": "^5.2.0"
-  }
+  },
+  "description": ""
 }
