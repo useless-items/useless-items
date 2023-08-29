@@ -54,7 +54,7 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                     <div className='login-category'>
                         <label>Username: </label>
-                        <input type="text" name='username' value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <input type="text" id="namebox" name='username' value={username} onChange={(e) => setUsername(e.target.value)} />
                     </div>
                     <div className='login-category'>
                         <label>Password: </label>
