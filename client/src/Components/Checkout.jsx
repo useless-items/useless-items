@@ -7,7 +7,7 @@ const Checkout = ({ totalPrice }) => {
   };
 
   return (
-    <div>
+    <div id='checkout'>
       <h2>Checkout</h2>
       <p>Total Price: ${totalPrice}</p>
       <button onClick={handleCheckout}>Proceed to Checkout</button>
