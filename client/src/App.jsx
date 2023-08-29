@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom"
 import Home from "./Components/Home.jsx"
-import User from "./Components/User.jsx"
+import Login from "./Components/Login.jsx"
 import Cart from "./Components/Cart.jsx"
 import Register from "./Components/Register.jsx"
 
@@ -29,7 +29,7 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<User />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register />} />
           </Routes>
