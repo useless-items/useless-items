@@ -13,12 +13,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!firstName || !lastName || !username || !email || !password) {
-            setError({ status: true, message: 'Please fill out all fields, you goofball.' });
-            setSuccess({ status: false, message: ''});
-            return;    
-        }
-
         setError({ status: false, message: '' });
 
         try {
@@ -64,23 +58,23 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <div className='register-category'>
                     <label>First Name: </label>
-                    <input type="text" name="firstname" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" name="firstname" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Last Name: </label>
-                    <input type="text" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    <input type="text" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Username: </label>
-                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Email: </label>
-                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Password: </label>
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className='register-submit-container'>
                     <button type='submit'>Register</button>
