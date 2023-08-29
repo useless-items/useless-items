@@ -10,7 +10,7 @@ const Register = () => {
     const [error, setError] = useState({status: false, message: ''});
     const [success, setSuccess] = useState({status: false, message: ''});
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!firstName || !lastName || !username || !email || !password) {
@@ -21,6 +21,27 @@ const Register = () => {
 
         setError({ status: false, message: '' });
 
+        try {
+            //This is a temporary fetch login, please change as backend is fleshed out.
+            const response = await fetch('/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                    'Authorization': 'Bearer '
+                },
+                body: JSON.stringify({ firstName, lastName, username, email, password }),
+            });
+
+            if(response.ok) {
+                setSuccess({ status: true, message: 'Register successful' });
+            } else {
+                setError({ status: true, message: 'Invalid credentials' });
+            }
+        } catch (error) {
+            console.log(error);
+            setError({ status: true, message: 'An error occured' });
+        }
+
         if (firstName && lastName && username && email && password) {
             setSuccess({ status: true, message: 'Success! You are Registered!'});
             return;
@@ -28,16 +49,7 @@ const Register = () => {
 
         setSuccess({ status: false, message: '' });
 
-        // formData for TESTING ONLY; Delete when authentication works.
-        const formData = {
-            firstName: firstName,
-            lastName: lastName,
-            username: username,
-            email: email,
-            password: password
-        };
 
-        console.log(formData);
     };
  
     return (

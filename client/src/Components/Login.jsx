@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -44,6 +45,9 @@ const Login = () => {
         <>
             <div id='login-page'>
                 {/* Add Home Button */}
+                <div>
+                    <Link to='/'>Home</Link>
+                </div>
 
                 <div>
                     <h1>Login Page</h1>
