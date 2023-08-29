@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div>
-      <h2 id="FindItems">Find Some Weird Items</h2>
+      <h2 id="FindItems">Find Some Weird Items:</h2>
       <input
         type="text"
         placeholder="Search..."

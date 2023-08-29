@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -52,26 +51,31 @@ const Cart = () => {
 
   return (
     <>
-      <div>
-        <h1>Shopping Cart</h1>
-      </div>
-
-      <section className='cart'>
-        <div className='container'>
-          {cartItems.map((product) => (
-            <div className='product' key={product.id}>
-              <img src={product.productImgUrl} alt={product.productName} />
-              <h3>{product.productName}</h3>
-              <h4>Price: ${product.price}</h4>
+        <div id='cart'>
+            <div>
+                <h1>Shopping Cart</h1>
             </div>
-          ))}
-        </div>
 
-        <div className='total'>
-          <h4>Total Price: ${totalPrice}</h4>
-          <button>Check Out</button>
+            <section>
+                <div className='container'>
+                {cartItems.map((product) => (
+                    <div className='product' key={product.id}>
+                    <img src={product.productImgUrl} alt={product.productName} />
+                    <h3>{product.productName}</h3>
+                    <h4>Price: ${product.price}</h4>
+                    </div>
+                ))}
+                </div>
+            </section>
+
+                <div className='total'>
+                <h4>Total Price: ${totalPrice}</h4>
+                {/* /* Link to the Checkout component */}
+                <Link to="/checkout" className="linkstyle">
+                <button>Check Out</button>
+                </Link>
+            </div>
         </div>
-      </section>
     </>
   );
 };

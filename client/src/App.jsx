@@ -4,6 +4,7 @@ import Home from './Components/Home.jsx';
 import Login from './Components/Login.jsx';
 import Cart from './Components/Cart.jsx';
 import Register from './Components/Register.jsx';
+import Checkout from './Components/Checkout.jsx';
 
 const App = () => {
   return (
@@ -39,6 +40,11 @@ const App = () => {
                   totalPrice={dummyTotalPrice}
                 />
               }
+            />
+            {/* Route for the Checkout component */}
+            <Route
+            path="/checkout"
+            element={<Checkout totalPrice={dummyTotalPrice} />}
             />
             <Route path="/register" element={<Register />} />
           </Routes>
