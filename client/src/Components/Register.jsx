@@ -13,12 +13,6 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!firstName || !lastName || !username || !email || !password) {
-            setError({ status: true, message: 'Please fill out all fields, you goofball.' });
-            setSuccess({ status: false, message: ''});
-            return;    
-        }
-
         setError({ status: false, message: '' });
 
         try {
