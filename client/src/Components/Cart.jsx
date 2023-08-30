@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Cart = ({ token }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product
 
   useEffect(() => {
     fetchCartItems();
@@ -36,21 +37,23 @@ const Cart = ({ token }) => {
     setTotalPrice(total);
   };
 
-  const addToCart = async (product) => {
+  const addToCart = async () => {
     try {
-      const response = await fetch('/api/cart/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(product),
-      });
+      if (selectedProduct) {
+        const response = await fetch('/api/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(selectedProduct), // Use selectedProduct
+        });
 
-      if (response.ok) {
-        await fetchCartItems();
-      } else {
-        console.error('Failed to add item to cart');
+        if (response.ok) {
+          await fetchCartItems();
+        } else {
+          console.error('Failed to add item to cart');
+        }
       }
     } catch (error) {
       console.error('Error adding item to cart:', error);
@@ -60,11 +63,19 @@ const Cart = ({ token }) => {
   return (
     <>
       <div id='cart'>
+        <section>
+          <div className='container'>
+            {cartItems.map((product) => (
+              <div className='product' key={product.id}>
+                <h3>{product.productName}</h3>
+                <h4>Price: ${product.price}</h4>
+              </div>
+            ))}
+          </div>
+        </section>
         <div className='total'>
           <h4>Total Price: ${totalPrice}</h4>
-          <button onClick={() => addToCart(selectedProduct)}>
-            Add to Cart
-          </button>
+          <button onClick={addToCart}>Add to Cart</button>
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>
