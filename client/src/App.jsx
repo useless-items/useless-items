@@ -5,8 +5,11 @@ import Login from './Components/Login.jsx';
 import Cart from './Components/Cart.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
+import { useState } from 'react';
 
 const App = () => {
+  const [token, setToken] = useState("");
+
   return (
     <>
       <div id="container">
