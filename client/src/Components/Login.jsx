@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setToken}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -27,7 +28,10 @@ const Login = () => {
                 },
                 body: JSON.stringify({ username, password }),
             });
-
+            console.log(response)
+            const data = await response.json();
+            setToken(data.token)
+            console.log(data)
             if(response.ok) {
                 setSuccess({ status: true, message: 'Login successful' });
             } else {
@@ -43,8 +47,6 @@ const Login = () => {
     return (
         <>
             <div id='login-page'>
-                {/* Add Home Button */}
-
                 <div>
                     <h1>Login Page</h1>
                 </div>

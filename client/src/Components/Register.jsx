@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Register = () => {
+const Register = ({setToken}) => {
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -10,34 +10,36 @@ const Register = () => {
     const [error, setError] = useState({status: false, message: ''});
     const [success, setSuccess] = useState({status: false, message: ''});
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!firstName || !lastName || !username || !email || !password) {
-            setError({ status: true, message: 'Please fill out all fields, you goofball.' });
-            setSuccess({ status: false, message: ''});
-            return;    
-        }
 
         setError({ status: false, message: '' });
 
-        if (firstName && lastName && username && email && password) {
-            setSuccess({ status: true, message: 'Success! You are Registered!'});
-            return;
+        try {
+            //This is a temporary fetch login, please change as backend is fleshed out.
+            const response = await fetch('/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                },
+                body: JSON.stringify({ firstName, lastName, username, email, password }),
+            });
+            
+            const data = await response.json();
+            if (data.token) {
+                setToken(data.token)
+                setSuccess({ status: true, message: 'Success! You are Registered!'});
+            }else {
+                setError({ status: true, message: 'Invalid credentials' });
+            }
+        } catch (error) {
+            console.log(error);
+            setError({ status: true, message: 'An error occured' });
         }
 
         setSuccess({ status: false, message: '' });
 
-        // formData for TESTING ONLY; Delete when authentication works.
-        const formData = {
-            firstName: firstName,
-            lastName: lastName,
-            username: username,
-            email: email,
-            password: password
-        };
 
-        console.log(formData);
     };
  
     return (
@@ -52,23 +54,23 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <div className='register-category'>
                     <label>First Name: </label>
-                    <input type="text" name="firstname" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" name="firstname" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Last Name: </label>
-                    <input type="text" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    <input type="text" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Username: </label>
-                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Email: </label>
-                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className='register-category'>
                     <label>Password: </label>
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className='register-submit-container'>
                     <button type='submit'>Register</button>

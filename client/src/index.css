@@ -4,33 +4,42 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 50px;
-    background-color: lightslategray;
-    transition: background-color 0.5s ease; /* Add a transition to background-color */
-    animation: colorCycle 10s infinite; /* Add an animation for color cycling */
-}
-
-/* Define keyframes for color cycling */
-@keyframes colorCycle {
-    0% { background-color: lightslategray; } /* Start with the initial color */
-    25% { background-color: indianred; } /* Transition to a different color */
-    50% { background-color: gold; } /* Transition to another color */
-    75% { background-color: darkolivegreen; } /* Transition to another color */
-    100% { background-color: lightslategray; } /* Return to the initial color */
-}
-
-
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+  }
+  
+  #navbar a {
+    color: lightgray;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white on hover */
+    color: #333; /* Change link color on hover */
+  }
 
 /* Register.jsx */
 #register {
     align-items: center;
     justify-content: center;
-    background-color: #228B22;
-}
+    background: linear-gradient(to bottom, #c0c0c0, darkslategray); /* Silver metallic gradient background */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
 
-body {
-    background-image: url(oldwest.jpg);
-    background-size: cover;
+body{
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: top;
+        background-image:url(http://bit.ly/2gPLxZ4);
+        width: 100%;
+        height: 100%;
 }
 
 
@@ -50,7 +59,7 @@ body {
 #HomeHeading {
     color:wheat;
     text-decoration: underline;
-    background-color: saddlebrown;
+    background: linear-gradient(to bottom, #c0c0c0, darkslategray);
 }
 
 .linkstyle {
@@ -62,8 +71,8 @@ body {
 #MainHeading {
     width: 600px;
     height: 150px;
-    background: linear-gradient(to bottom, #FFD700, #CD853F);
-    border: 5px solid #8B4513;
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+    border: 5px solid black;
     border-radius: 10px;
     position: relative;
     display: flex;
@@ -71,7 +80,7 @@ body {
     justify-content: center;
     font-family: 'Lobster', cursive;
     font-size: xx-large;
-    color: #8B4513;
+    color: black;
     white-space: nowrap;
 }
 
@@ -83,11 +92,23 @@ body {
 
 #FindItems {
     font-size: xx-large;
-    background-color: #228B22;
+    background-color: cadetblue;
 }
 
 input[type="text"] {
     width: 50%;
     padding: 12px;
     font-size: 14px;
+}
+
+#login-page {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+}
+
+#cart {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+}
+
+#checkout {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
 }

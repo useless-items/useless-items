@@ -21,7 +21,7 @@ const main = async () => {
       email: "JTP@email.com",
       username: "JPric123",
       password: await bcrypt.hash("jtPassword123", 10),
-      isAdmin: true
+      isAdmin: false
     }
   })
   const user3 = await prisma.user.create({
@@ -153,3 +153,4 @@ const main = async () => {
 }
 
 main();
+

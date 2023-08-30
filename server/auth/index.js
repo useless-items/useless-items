@@ -42,11 +42,14 @@ router.post('/login', async (req, res) => {
   const user = await prisma.user.findUnique({
     where: {username: username}
   })
-
   if(user){
     const matchingPassword = await bcrypt.compare(password, user.password);
     if(matchingPassword){
       const token = jwt.sign({id: user.id}, process.env.JWT)
+      const responseData = {token, isAdmin: true}
+      if(user.isAdmin){
+        res.status(201).send(responseData)  
+      }
       res.status(201).send({token})
     }else{
       res.send({message: 'couldnt find user'})
