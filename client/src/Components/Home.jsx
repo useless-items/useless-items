@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import axios from 'axios';
 
 const Home = () => {
   // State to store the search query
   const [searchQuery, setSearchQuery] = useState("");
-  const [product, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-
     const fetchProducts = async() => {
-      await prisma.product.findMany().then((response) => {
-        setProducts(response);
-      });
+      try {
+        const response = await axios.get('/api/products.js');
+        setProducts(response.data);
+      } catch (error) {
+        console.log('Error fetching products: ', error);
+      }
     }
       
     fetchProducts();
@@ -41,6 +42,11 @@ const Home = () => {
               <p>{product.description}</p>
               <h4>Rating: {product.productRating}</h4>
               <h5>Price: {product.pennies /100}</h5>
+              {product.user && (
+                <div>
+                  <p>User: {product.user.username}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
