@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const cart = await prisma.shoppingCartProduct.update({
       where: {
@@ -50,21 +50,36 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.get('/usercart/:id', async(req, res) => {
+router.post("/usercart", async (req, res) => {
   try {
-    const cart = await prisma.shoppingCart.findUnique({
-      where: {
-        isClosed: false,
-        userId: Number(req.params.id),
-      },
-      include: {
-        shoppingCartProduct: true,
-      },
+    const cart = await prisma.shoppingCart.create({
+      data: req.body,
     });
     res.send(cart);
   } catch (error) {
     res.send(error);
   }
-})
+});
+
+router.get('/usercart/:userId', async(req, res) => {
+  try {
+    const cart = await prisma.shoppingCart.findFirst({
+      where: {
+        userId: Number(req.params.userId),
+        isClosed: false,
+      },
+      include: {
+        shoppingCartProduct: true,
+      },
+    });
+    if (!cart) {
+      res.send({error: true, message: "No Items Found"});
+    } else {
+      res.send(cart);
+    }
+  } catch (error) {
+    res.send(error);
+  }
+});
 
 module.exports = router;
