@@ -33,9 +33,23 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login setToken={setToken}/>} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/register" element={<Register setToken={setToken} />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  cartItems={dummyCartItems}
+                  totalPrice={dummyTotalPrice}
+                  token={token}
+                />
+              }
+            />
+            {/* Route for the Checkout component */}
+            <Route
+            path="/checkout"
+            element={<Checkout totalPrice={dummyTotalPrice} />}
+            />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>
