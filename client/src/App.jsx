@@ -31,13 +31,13 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            {/* Pass cartItems and totalPrice to Cart component */}
             <Route
               path="/cart"
               element={
                 <Cart
                   cartItems={dummyCartItems}
                   totalPrice={dummyTotalPrice}
+                  token={token}
                 />
               }
             />
