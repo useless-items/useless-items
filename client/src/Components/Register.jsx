@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Register = () => {
+const Register = ({setToken}) => {
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -21,24 +21,20 @@ const Register = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
-                    'Authorization': 'Bearer '
                 },
                 body: JSON.stringify({ firstName, lastName, username, email, password }),
             });
-
-            if(response.ok) {
-                setSuccess({ status: true, message: 'Register successful' });
-            } else {
+            
+            const data = await response.json();
+            if (data.token) {
+                setToken(data.token)
+                setSuccess({ status: true, message: 'Success! You are Registered!'});
+            }else {
                 setError({ status: true, message: 'Invalid credentials' });
             }
         } catch (error) {
             console.log(error);
             setError({ status: true, message: 'An error occured' });
-        }
-
-        if (firstName && lastName && username && email && password) {
-            setSuccess({ status: true, message: 'Success! You are Registered!'});
-            return;
         }
 
         setSuccess({ status: false, message: '' });
