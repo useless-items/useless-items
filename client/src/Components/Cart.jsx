@@ -40,7 +40,7 @@ const Cart = ({ token }) => {
   const addToCart = async () => {
     try {
       if (selectedProduct) {
-        const response = await fetch('/api/cart/add', {
+        const response = await fetch('/api/cart', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
