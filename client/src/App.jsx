@@ -6,6 +6,7 @@ import Cart from './Components/Cart.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
 import { useState } from 'react';
+import Admin from './Components/Admin.jsx';
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/login" element={<Login setToken={setToken}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
+            <Route path="/users" element={<Admin token={token}/>}/>
           </Routes>
         </div>
       </div>

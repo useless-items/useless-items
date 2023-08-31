@@ -112,3 +112,7 @@ input[type="text"] {
 #checkout {
     background: linear-gradient(to bottom, lightgray, darkslategray);
 }
+
+h1, h3{
+  color: aliceblue;
+}
