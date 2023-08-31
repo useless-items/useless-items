@@ -6,7 +6,6 @@ import Cart from './Components/Cart.jsx';
 import UserPortal from './Components/UserPortal.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
-import { useState } from 'react';
 
 const App = () => {
   
