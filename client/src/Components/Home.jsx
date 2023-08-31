@@ -2,38 +2,20 @@ import React, { useState, useEffect } from "react";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [allProducts, setAllProducts] = useState([]);
-
+  const [allProducts, setAllProducts] = useState([])
+  // Event handler to update the search query
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const result = await fetch('/api/products');
-        const data = await result.json();
-        console.log(data);
-        setAllProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  const renderProducts = (products) => {
-    return products.map((product) => (
-      <div key={product.id}>
-        <h1>{product.productName}</h1>
-        <h3>Price: {product.pennies}</h3>
-        <h3>Description: {product.description}</h3>
-        <h3>{product.productImgUrl}</h3>
-        <h3>Rating: {product.productRating}</h3>
-        <h3>Stock: {product.stock}</h3>
-      </div>
-    ));
-  };
+      const result = await fetch('/api/products');
+      const data = await result.json();
+      setAllProducts(data)
+      console.log(data)
+    }
+    fetchProducts()
+  }, [])
 
   return (
     <div>
@@ -44,9 +26,25 @@ const Home = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      {renderProducts(allProducts)}
+
+      {/* Display search results or content */}
+      {
+      allProducts.map((products) => {
+        return(
+          <>
+            <h1 key={products.id}>{products.productName}</h1>
+            <h3>Price: {products.pennies}</h3>
+            <h3>Description: {products.description}</h3>
+            <h3>{products.productImgUrl}</h3>
+            <h3>Rating: {products.productRating}</h3>
+            <h3>Stock: {products.stock}</h3>
+            {/* <button onClick={() => handleProductsDelete(products.id)}>Delete</button> */}
+          </>
+        )
+      })
+    }
+
     </div>
   );
 };
-
 export default Home;
