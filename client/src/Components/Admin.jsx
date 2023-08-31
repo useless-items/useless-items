@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import ProductForm from './ProductForm';
 
 
 
@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const Admin = ({token}) => {
   const [allUsers, setAllUsers] = useState([])
   const [allProducts, setAllProducts] = useState([])
+  const [isProductFormOpen, setProductFormOpen] = useState(false);
   const isAdmin = true;
 
 
@@ -59,12 +60,38 @@ const handleProductsDelete = async (productId) => {
   }
 }
 
+const handleProductSubmit = async (formData) => {
+  try {
+    const response = await fetch('/api/products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert('Product successfully posted.');
+    } else {
+      alert('Failed to post product.');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleProductForm = () => {
+  setProductFormOpen(!isProductFormOpen);
+};
 
   if(isAdmin){
     return(
       <>
     <h1>Admin portal</h1>
-    <h1>USERS</h1>
+    <button onClick={handleProductForm}>Post Product</button>
+    {isProductFormOpen && (
+        <ProductForm handleProductSubmit={handleProductSubmit} />
+      )}
     {
       allUsers.map((users) => {
         return(
