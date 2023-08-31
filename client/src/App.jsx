@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './Components/Home.jsx';
 import Login from './Components/Login.jsx';
 import Cart from './Components/Cart.jsx';
+import UserPortal from './Components/UserPortal.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
 import { useState } from 'react';
@@ -24,6 +25,9 @@ const App = () => {
           <Link to="/login" className="linkstyle">
             User Login
           </Link>
+          <Link to="/userportal" className="linkstyle">
+            User Portal
+          </Link>
           <Link to="/cart" className="linkstyle">
             Shopping Cart
           </Link>
@@ -33,14 +37,9 @@ const App = () => {
         </div>
         <div id="main-section">
           <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/login"
-              element={<Login setToken={setToken} />}
-            />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login setToken={setToken} />}
+            <Route path="/userportal" element={<UserPortal />} />
             <Route
               path="/cart"
               element={<Cart token={token} />}
