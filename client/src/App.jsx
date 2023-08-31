@@ -38,7 +38,7 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login setToken={setToken} />}
+            <Route path="/login" element={<Login setToken={setToken} />} />
             <Route path="/userportal" element={<UserPortal />} />
             <Route
               path="/cart"
