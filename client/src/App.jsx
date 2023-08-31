@@ -7,13 +7,14 @@ import UserPortal from './Components/UserPortal.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
 
-import { useState } from 'react';
-import Admin from './Components/Admin.jsx';
+
+
 import ProductForm from './Components/ProductForm.jsx';
 
 const App = () => {
   
   const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   return (
     <>
@@ -41,12 +42,11 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login setToken={setToken}/>} />
+            <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
-            <Route path="/users" element={<Admin token={token}/>}/>
-            <Route path="/admin/post-product" element={<ProductForm />} />
-
+            <Route path="/userportal" element={<UserPortal token={token} userId={userId}/>}/>
+            <Route path="/api/products" element={<ProductForm />} />
           </Routes>
         </div>
       </div>

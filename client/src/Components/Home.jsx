@@ -35,10 +35,7 @@ const Home = () => {
 
     </div>
     <div className="products">
-      {renderProducts(allProducts)}
-
-
-      {/* Display search results or content */}
+     
       {
       allProducts.map((products) => {
         return(
