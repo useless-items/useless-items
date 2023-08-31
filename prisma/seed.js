@@ -101,7 +101,7 @@ const main = async () => {
   })
   const product6 = await prisma.product.create({
     data: {
-      productName: "Yoedling pickle",
+      productName: "Yodeling pickle",
       stock: 700,
       description: "Can't afford a pickle rick? This is the next best thing!",
       productImgUrl: "yoedlepickle.jpg",
@@ -110,6 +110,46 @@ const main = async () => {
       userId: user3.id
     }
   })
+
+  const user1Cart = await prisma.shoppingCart.create({
+    data: {
+      userId: user1.id,
+      isClosed: false,
+    }
+  });
+  
+  const user2Cart = await prisma.shoppingCart.create({
+    data: {
+      userId: user2.id,
+      isClosed: false,
+    }
+  });
+
+  const user1CartProducts = await prisma.shoppingCartProduct.create({
+    data:{
+      productId: product1.id,
+      shoppingCartId: 1,
+      quantity: 2,
+      pennies: product1.pennies * 2,
+    },
+  });
+  
+  const user2CartProducts = await prisma.shoppingCartProduct.createMany({
+    data: [
+      {
+        productId: product2.id,
+        shoppingCartId: 2,
+        quantity: 1,
+        pennies: product2.pennies * 1,
+      },
+      {
+        productId: product3.id,
+        shoppingCartId: 2,
+        quantity: 3,
+        pennies: product3.pennies * 3,
+      },
+    ]
+  });
 }
 
 main();

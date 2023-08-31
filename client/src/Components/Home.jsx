@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+
 const Home = () => {
-  // State to store the search query
   const [searchQuery, setSearchQuery] = useState("");
   const [allProducts, setAllProducts] = useState([])
   // Event handler to update the search query
@@ -16,6 +16,7 @@ const Home = () => {
     }
     fetchProducts()
   }, [])
+
   return (
     <div>
       <h2 id="FindItems">Find Some Weird Items:</h2>
@@ -25,6 +26,7 @@ const Home = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+
       {/* Display search results or content */}
       {
       allProducts.map((products) => {
@@ -41,6 +43,7 @@ const Home = () => {
         )
       })
     }
+
     </div>
   );
 };
