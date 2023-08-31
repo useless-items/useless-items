@@ -76,6 +76,7 @@ const Cart = ({ token }) => {
         <div className='total'>
           <h4>Total Price: ${totalPrice}</h4>
           <button onClick={addToCart}>Add to Cart</button>
+
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>

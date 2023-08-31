@@ -33,7 +33,6 @@ const App = () => {
         </div>
         <div id="main-section">
           <Routes>
-
             <Route
               path="/"
               element={<Home />}
@@ -54,6 +53,7 @@ const App = () => {
               path="/checkout"
               element={<Checkout />}
             />
+
           </Routes>
         </div>
       </div>
