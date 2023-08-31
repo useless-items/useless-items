@@ -24,7 +24,7 @@ const Home = () => {
 
   const renderProducts = (products) => {
     return products.map((product) => (
-      <div key={product.id}>
+      <div key={product.id} className="product">
         <h1>{product.productName}</h1>
         <h3>Price: {product.pennies}</h3>
         <h3>Description: {product.description}</h3>
@@ -36,7 +36,8 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="products-container">
+    <div className="search-bar">
       <h2 id="FindItems">Find Some Weird Items:</h2>
       <input
         type="text"
@@ -44,8 +45,11 @@ const Home = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+    </div>
+    <div className="products">
       {renderProducts(allProducts)}
     </div>
+  </div> 
   );
 };
 
