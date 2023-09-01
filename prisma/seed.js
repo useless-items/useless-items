@@ -101,7 +101,7 @@ const main = async () => {
   })
   const product6 = await prisma.product.create({
     data: {
-      productName: "Yoedling pickle",
+      productName: "Yodeling pickle",
       stock: 700,
       description: "Can't afford a pickle rick? This is the next best thing!",
       productImgUrl: "yoedlepickle.jpg",
