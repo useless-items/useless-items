@@ -81,6 +81,7 @@ const Home = ({ addToCart: addToCartProp }) => {
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>
             <h3>Stock: {product.stock}</h3>
+            <button onClick={() => addToCart(products)}>Add to Cart</button>
             <button onClick={() => navigate(`/products/${product.id}`)}>View Product Details</button>
             <button onClick={() => handleProductsDelete(product.id)}>
               Delete
@@ -92,6 +93,4 @@ const Home = ({ addToCart: addToCartProp }) => {
   );
 };
 
-
 export default Home;
-

@@ -6,14 +6,13 @@ import Cart from './Components/Cart.jsx';
 import UserPortal from './Components/UserPortal.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
-import Admin from './Components/Admin.jsx';
 import ProductForm from './Components/ProductForm.jsx';
 import ProductDetails from './Components/ProductDetails.jsx';
 
 const App = () => {
   
   const [token, setToken] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   return (
     <>
@@ -41,12 +40,13 @@ const App = () => {
         <div id="main-section">
           <Routes>
             <Route path="/" element={<Home addToCart={(product) => addToCart(product)} />} />
-            <Route path="/login" element={<Login setToken={setToken}/>} />
+            <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
-            <Route path="/users" element={<Admin token={token}/>}/>
-            <Route path="/admin/post-product" element={<ProductForm />} />
+            <Route path="/userportal" element={<UserPortal token={token} userId={userId}/>}/>
+            <Route path="/api/products" element={<ProductForm />} />
+
           </Routes>
         </div>
       </div>

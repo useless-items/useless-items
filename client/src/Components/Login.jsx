@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = ({setToken}) => {
+const Login = ({setToken, setUserId}) => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
@@ -32,9 +32,8 @@ const Login = ({setToken}) => {
             const data = await response.json();
             setToken(data.token)
             if(response.ok) {
-                if (data.isAdmin) {
-                    navigate('/users');
-                }
+                navigate('/userportal');
+                setUserId(data.userId);
 
                 setSuccess({ status: true, message: 'Login successful' });
             } else {
