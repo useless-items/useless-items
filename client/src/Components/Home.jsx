@@ -40,7 +40,7 @@ const Home = () => {
 
       <div className="products">
         {allProducts.map((product) => (
-          <div key={product.id}>
+          <div key={product.id} className="product-box">
             <h1>{product.productName}</h1>
             <h3>Price: {product.pennies}</h3>
             <h3>Description: {product.description}</h3>
