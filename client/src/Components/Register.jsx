@@ -46,7 +46,7 @@ const Register = ({setToken}) => {
     return (
         <div id="register">
             <div>
-                <h1>User Registration</h1>
+                <h1>Fill Form to Register as New User:</h1>
             </div>
             
             {error.status && <h2 className='error-message'>{error.message}</h2>}

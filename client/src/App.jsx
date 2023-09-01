@@ -6,10 +6,8 @@ import Cart from './Components/Cart.jsx';
 import UserPortal from './Components/UserPortal.jsx';
 import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
-
-
-
 import ProductForm from './Components/ProductForm.jsx';
+import ProductDetails from './Components/ProductDetails.jsx';
 
 const App = () => {
   
@@ -41,12 +39,14 @@ const App = () => {
         </div>
         <div id="main-section">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home addToCart={(product) => addToCart(product)} />} />
             <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path="/userportal" element={<UserPortal token={token} userId={userId}/>}/>
             <Route path="/api/products" element={<ProductForm />} />
+
           </Routes>
         </div>
       </div>
