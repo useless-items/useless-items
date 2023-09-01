@@ -9,16 +9,22 @@ const Home = () => {
   };
   useEffect(() => {
     const fetchProducts = async () => {
-      const result = await fetch('/api/products');
-      const data = await result.json();
-      setAllProducts(data)
-      console.log(data)
-    }
-    fetchProducts()
-  }, [])
+
+      try {
+        const result = await fetch('/api/products');
+        const data = await result.json();
+        console.log(data);
+        setAllProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   return (
-    <div>
+    <div className="products-container">
+    <div className="search-bar">
       <h2 id="FindItems">Find Some Weird Items:</h2>
       <input
         type="text"
@@ -26,6 +32,11 @@ const Home = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+
+    </div>
+    <div className="products">
+      {renderProducts(allProducts)}
+
 
       {/* Display search results or content */}
       {
@@ -45,6 +56,7 @@ const Home = () => {
     }
 
     </div>
+  </div> 
   );
 };
 export default Home;
