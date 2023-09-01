@@ -30,6 +30,9 @@ const Cart = ({ token }) => {
   };
 
   const calculateTotalPrice = (items) => {
+
+   
+
     const total = items.reduce(
       (accumulator, product) => {
         return accumulator + product.pennies
@@ -37,6 +40,7 @@ const Cart = ({ token }) => {
       0
     );
     setTotalPrice(total/100);
+
   };
 
   const addToCart = async () => {
@@ -67,7 +71,7 @@ const Cart = ({ token }) => {
       <div id='cart'>
         <section>
           <div className='container'>
-            {cartItems.map((product) => (
+            {cartItems && cartItems.map((product) => (
               <div className='product' key={product.id}>
                 <h3>{product.productName}</h3>
                 <h4>Price: ${product.price}</h4>

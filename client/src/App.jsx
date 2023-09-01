@@ -13,6 +13,7 @@ import ProductDetails from './Components/ProductDetails.jsx';
 const App = () => {
   
   const [token, setToken] = useState(null);
+  const [cart, setCart] = useState([]);
 
   return (
     <>
@@ -39,7 +40,7 @@ const App = () => {
         </div>
         <div id="main-section">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home addToCart={(product) => addToCart(product)} />} />
             <Route path="/login" element={<Login setToken={setToken}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/products/:id" element={<ProductDetails />} />
