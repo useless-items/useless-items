@@ -7,6 +7,7 @@ const PORT = 3009;
 
 
 app.use(require("body-parser").json());
+app.use(require("morgan")("dev"));
 
 app.use((req, res, next) => {
   const auth = req.headers.authorization;

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = ({setToken}) => {
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -28,11 +29,13 @@ const Login = ({setToken}) => {
                 },
                 body: JSON.stringify({ username, password }),
             });
-            console.log(response)
             const data = await response.json();
             setToken(data.token)
-            console.log(data)
             if(response.ok) {
+                if (data.isAdmin) {
+                    navigate('/users');
+                }
+
                 setSuccess({ status: true, message: 'Login successful' });
             } else {
                 setError({ status: true, message: 'Invalid credentials' });

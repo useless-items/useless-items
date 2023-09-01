@@ -28,9 +28,10 @@ const Register = ({setToken}) => {
             const data = await response.json();
             if (data.token) {
                 setToken(data.token)
-                setSuccess({ status: true, message: 'Success! You are Registered!'});
+                // setSuccess({ status: true, message: 'Success! You are Registered!'});
+                alert('success you are registered')
             }else {
-                setError({ status: true, message: 'Invalid credentials' });
+                setError({ status: 401, message: 'Invalid credentials' });
             }
         } catch (error) {
             console.log(error);

@@ -113,6 +113,7 @@ input[type="text"] {
     background: linear-gradient(to bottom, lightgray, darkslategray);
 }
 
+
 #namebox {
     padding: 2px;
 }
@@ -155,3 +156,4 @@ input[type="text"] {
 .product:hover {
     transform: scale(1.05) translateZ(0);
 }
+
