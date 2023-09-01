@@ -8,6 +8,7 @@ import Register from './Components/Register.jsx';
 import Checkout from './Components/Checkout.jsx';
 import Admin from './Components/Admin.jsx';
 import ProductForm from './Components/ProductForm.jsx';
+import ProductDetails from './Components/ProductDetails.jsx';
 
 const App = () => {
   
@@ -42,10 +43,10 @@ const App = () => {
             <Route path="/" element={<Home addToCart={(product) => addToCart(product)} />} />
             <Route path="/login" element={<Login setToken={setToken}/>} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path="/users" element={<Admin token={token}/>}/>
             <Route path="/admin/post-product" element={<ProductForm />} />
-
           </Routes>
         </div>
       </div>

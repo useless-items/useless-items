@@ -114,7 +114,47 @@ input[type="text"] {
 }
 
 
-h1, h3{
-  color: aliceblue;
+#namebox {
+    padding: 2px;
+}
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    margin-top: 375px;
+}
+
+.product-box {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 50px;
+    width: 500px;
+    background: rgba(211, 211, 211, 0.5);
+}
+
+.search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.product-details {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+    background: rgba(211, 211, 211, 0.48);
 
 }

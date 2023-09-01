@@ -18,9 +18,9 @@ const Cart = ({ token }) => {
         },
       });
       if (response.ok) {
-        const data = await response.json();
-        setCartItems(data.cartItems);
-        calculateTotalPrice(data.cartItems);
+        const cartItems = await response.json();
+        setCartItems(cartItems);
+        calculateTotalPrice(cartItems);
       } else {
         console.error('Failed to fetch cart items');
       }
@@ -30,15 +30,17 @@ const Cart = ({ token }) => {
   };
 
   const calculateTotalPrice = (items) => {
-    if(items && items.length > 0){
-      const total = items.reduce(
-        (accumulator, product) => accumulator + product.price,
-        0
-      );
-      setTotalPrice(total);
-    } else {
-      setTotalPrice(0);
-    }
+
+   
+
+    const total = items.reduce(
+      (accumulator, product) => {
+        return accumulator + product.pennies
+      },
+      0
+    );
+    setTotalPrice(total/100);
+
   };
 
   const addToCart = async () => {
