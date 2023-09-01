@@ -31,15 +31,15 @@ const Home = () => {
       {
       allProducts.map((products) => {
         return(
-          <>
-            <h1 key={products.id}>{products.productName}</h1>
+          <div key={products.id}>
+            <h1>{products.productName}</h1>
             <h3>Price: {products.pennies}</h3>
             <h3>Description: {products.description}</h3>
             <h3>{products.productImgUrl}</h3>
             <h3>Rating: {products.productRating}</h3>
             <h3>Stock: {products.stock}</h3>
             {/* <button onClick={() => handleProductsDelete(products.id)}>Delete</button> */}
-          </>
+          </div>
         )
       })
     }
