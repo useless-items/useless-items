@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
+const { requireUser } = require("./utils");
 const prisma = new PrismaClient();
 
 router.get('/', async (req, res) => {
@@ -35,7 +36,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", requireUser, async (req, res) => {
   try {
     const product = await prisma.product.create({
       data: req.body,
@@ -46,7 +47,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", requireUser, async (req, res) => {
   try {
     const product = await prisma.product.update({
       where: {
@@ -64,7 +65,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", requireUser, async (req, res) => {
   try {
     const product = await prisma.product.delete({
       where: {

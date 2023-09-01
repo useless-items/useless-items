@@ -6,6 +6,6 @@ const requireUser = (req, res, next) => {
     }
 } 
 
-modules.exports = {
+module.exports = {
     requireUser
 }

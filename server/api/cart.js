@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const { requireUser } = require('./utils');
 
 
-router.get('/', async (req, res) => {
+router.get('/', requireUser, async (req, res) => {
   try {
     const cart = await prisma.shoppingCartProduct.findMany();
     res.send(cart);
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", requireUser, async (req, res) => {
   try {
     const cart = await prisma.shoppingCartProduct.create({
       data: req.body,
@@ -23,7 +24,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", requireUser, async (req, res) => {
   try {
     const cart = await prisma.shoppingCartProduct.update({
       where: {
@@ -37,7 +38,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", requireUser, async (req, res) => {
   try {
     const cart = await prisma.shoppingCartProduct.delete({
       where: {
@@ -50,7 +51,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.post("/usercart", async (req, res) => {
+router.post("/usercart", requireUser, async (req, res) => {
   try {
     const cart = await prisma.shoppingCart.create({
       data: req.body,
@@ -61,7 +62,7 @@ router.post("/usercart", async (req, res) => {
   }
 });
 
-router.get('/usercart/:userId', async(req, res) => {
+router.get('/usercart/:userId', requireUser, async(req, res) => {
   try {
     const cart = await prisma.shoppingCart.findFirst({
       where: {
