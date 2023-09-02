@@ -49,7 +49,7 @@ const main = async () => {
       productName: "Inferno Knuckles",
       stock: 50,
       description: "For when you need to punch someone in the dark.",
-      productImgUrl: "infernoknucks.jpg",
+      productImgUrl: "https://static1.pocketlintimages.com/wordpress/wp-content/uploads/147864-gadgets-feature-unnecessary-inventions-that-are-hilariously-useless-image29-v3bmbjzttp.jpg?q=50&fit=crop&w=767&dpr=1.5",
       productRating: 2,
       pennies: 30000,
       userId: user2.id
@@ -60,7 +60,7 @@ const main = async () => {
       productName: "Dinosaur taco holder",
       stock: 3,
       description: "Need to impress someone special? This is how you do it.",
-      productImgUrl: "dinotaco.jpg",
+      productImgUrl: "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/09/taco-saurus-1.jpg?q=50&fit=crop&w=1500&dpr=1.5",
       productRating: 1,
       pennies: 20000,
       userId: user.id
@@ -71,7 +71,7 @@ const main = async () => {
       productName: "Mobile toilet paper",
       stock: 8000,
       description: "For when your nose is runny or you have taco bell, we wont ask.",
-      productImgUrl: "mobilepaper.jpg",
+      productImgUrl: "https://i0.wp.com/justsomething.co/wp-content/uploads/2013/11/crazy-japanese-inventions-16.jpeg?ssl=1",
       productRating: 3,
       pennies: 40000,
       userId: user1.id
@@ -82,7 +82,7 @@ const main = async () => {
       productName: "Nutty bandit",
       stock: 1,
       description: "Finally found the culprit stealing my peanut butter.",
-      productImgUrl: "racoon.jpg",
+      productImgUrl: "https://i.pinimg.com/originals/13/dc/75/13dc75ce581474523c3ae1d7286681e3.jpg",
       productRating: 10,
       pennies: 50000,
       userId: user.id
@@ -93,7 +93,7 @@ const main = async () => {
       productName: "Totally normal bank",
       stock: 500,
       description: "If you need to save some extra change, this is for you.",
-      productImgUrl: "weirdbank.jpg",
+      productImgUrl: "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/09/money-box-1-1.jpg?q=50&fit=crop&w=1500&dpr=1.5",
       productRating: 1,
       pennies: 80000,
       userId: user2.id
@@ -104,7 +104,7 @@ const main = async () => {
       productName: "Yodeling pickle",
       stock: 700,
       description: "Can't afford a pickle rick? This is the next best thing!",
-      productImgUrl: "yoedlepickle.jpg",
+      productImgUrl: "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/09/amazon-pickle-1.jpg?q=50&fit=crop&w=1500&dpr=1.5",
       productRating: 2,
       pennies: 10000,
       userId: user3.id

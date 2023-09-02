@@ -35,7 +35,7 @@ const Home = () => {
 
     </div>
     <div className="products">
-      {renderProducts(allProducts)}
+      
 
 
       {/* Display search results or content */}
@@ -46,7 +46,7 @@ const Home = () => {
             <h1 key={products.id}>{products.productName}</h1>
             <h3>Price: {products.pennies}</h3>
             <h3>Description: {products.description}</h3>
-            <h3>{products.productImgUrl}</h3>
+            <img src={products.productImgUrl} />
             <h3>Rating: {products.productRating}</h3>
             <h3>Stock: {products.stock}</h3>
             {/* <button onClick={() => handleProductsDelete(products.id)}>Delete</button> */}
