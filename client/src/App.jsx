@@ -13,6 +13,7 @@ const App = () => {
   
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
 
   const addToCart = async (product) => {
     try {
@@ -30,7 +31,7 @@ const App = () => {
       });
 
       if (response.ok) {
-        setCartItems([product, ...cartItems]);
+        setCartItems([...cartItems, product]);
         console.log('Item added to cart successfully');
       } else {
         console.error('Error adding to cart');
@@ -67,7 +68,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home addToCart={addToCart} />} />
             <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
-            <Route path="/cart" element={<Cart token={token} addToCart={addToCart} />} />
+            <Route path="/cart" element={<Cart token={token} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path="/userportal" element={<UserPortal token={token} userId={userId}/>}/>

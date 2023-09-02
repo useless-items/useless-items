@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = ({ token }) => {
-  const [cartItems, setCartItems] = useState([]);
+const Cart = ({ token, cartItems, setCartItems, addToCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product
-
+  
   useEffect(() => {
     fetchCartItems();
   }, [token]);
@@ -19,7 +17,6 @@ const Cart = ({ token }) => {
       });
       if (response.ok) {
         const cartItems = await response.json();
-        setCartItems(cartItems);
         calculateTotalPrice(cartItems);
       } else {
         console.error('Failed to fetch cart items');
@@ -34,53 +31,39 @@ const Cart = ({ token }) => {
     const total = items.reduce(
       (accumulator, product) => {
         return accumulator + product.pennies
-      },
-      0
-    );
+      },0);
     setTotalPrice(total/100);
-
   };
 
-  const addToCart = async () => {
-    try {
-      if (selectedProduct) {
-        const response = await fetch('/api/cart', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(selectedProduct), // Use selectedProduct
-        });
-
-        if (response.ok) {
-          await addToCart(selectedProduct);
-        } else {
-          console.error('Failed to add item to cart');
-        }
-      }
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
-    }
+  const removeFromCart = (productToRemove) => {
+    const updatedCart = cartProducts.filter(
+      (product) => product.id !== productToRemove.id
+    );
+    setCartProducts(updatedCart);
+    setCartItems(updatedCart); // Update the parent component's state as well
   };
+
 
   return (
     <>
+
       <div id='cart'>
         <section>
           <div className='container'>
-            {cartItems && cartItems.map((product) => (
+            {/* {console.log(cartItems)} */}
+            {cartItems.map((product) => (
               <div className='product' key={product.id}>
-                <h3>{product.productName}</h3>
-                <h4>Price: ${product.price}</h4>
+                {console.log(product)}
+                {/* {<h1>{product.productName}</h1>} */}
+                {/* <h3>{product.productName}</h3>
+                {product.price && <h4>Price: ${product.price}</h4>}
+                {product && <button onClick={() => removeFromCart(product)}>Remove from Cart</button>} */}
               </div>
             ))}
           </div>
         </section>
         <div className='total'>
-          <h4>Total Price: ${totalPrice}</h4>
-          <button onClick={addToCart}>Add to Cart</button>
-
+          <h4>Total Price: ${totalPrice.toFixed(2)}</h4> 
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>
