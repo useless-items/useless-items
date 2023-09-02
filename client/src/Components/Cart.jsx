@@ -31,8 +31,6 @@ const Cart = ({ token }) => {
 
   const calculateTotalPrice = (items) => {
 
-   
-
     const total = items.reduce(
       (accumulator, product) => {
         return accumulator + product.pennies
@@ -56,7 +54,7 @@ const Cart = ({ token }) => {
         });
 
         if (response.ok) {
-          await fetchCartItems();
+          await addToCart(selectedProduct);
         } else {
           console.error('Failed to add item to cart');
         }

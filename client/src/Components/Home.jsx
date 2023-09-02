@@ -2,44 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails.jsx";
 
-const Home = ({ addToCart: addToCartProp }) => {
+const Home = ({ addToCart }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState([]);
+  const [localCartItems, setLocalCartItems] = useState([]);
   // Event handler to update the search query
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-
-  const addToCart = async (product) => {
-    try {
-      const response = await fetch("/api/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          productId: product.id,
-          quantity: 1,
-          pennies: product.pennies,
-          shoppingCartId: product.id,
-        }),
-      });
-
-      if (response.ok) {
-        setCartItems([product, ...cartItems]);
-        console.log('Item added to cart successfully');
-      } else {
-        console.error('Error adding to cart');
-      }
-    } catch (error){
-      console.error('Error adding to cart:', error);
-    };
-  }
-
+  const addToLocalCart = (product) => {
+    setLocalCartItems((prevItems) => [...prevItems, product]);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -56,8 +32,8 @@ const Home = ({ addToCart: addToCartProp }) => {
   }, []);
 
   useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+    console.log(localCartItems);
+  }, [localCartItems]);
 
   return (
     <div className="products-container">
@@ -71,7 +47,6 @@ const Home = ({ addToCart: addToCartProp }) => {
         />
       </div>
 
-
       <div className="products">
         {allProducts.map((product) => (
           <div key={product.id} className="product-box">
@@ -81,7 +56,7 @@ const Home = ({ addToCart: addToCartProp }) => {
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>
             <h3>Stock: {product.stock}</h3>
-            <button onClick={() => addToCart(products)}>Add to Cart</button>
+            <button onClick={() => addToLocalCart(product)}>Add to Cart</button>
             <button onClick={() => navigate(`/products/${product.id}`)}>View Product Details</button>
             <button onClick={() => handleProductsDelete(product.id)}>
               Delete
