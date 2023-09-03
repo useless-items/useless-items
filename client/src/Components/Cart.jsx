@@ -42,6 +42,9 @@ const Cart = ({ token, cartItems, setCartItems }) => {
     setCartItems(updatedCart); // Update the parent component's state as well
   };
 
+  const clearTotalCart = () => {
+    setCartItems([]);
+  }
 
   return (
     <>
@@ -49,12 +52,11 @@ const Cart = ({ token, cartItems, setCartItems }) => {
       <div id='cart'>
         <section>
           <div className='container'>
-            {/* {console.log(cartItems)} */}
             {cartItems.map((product) => (
               <div className='product' key={product.id}>
                 {console.log(product)}
                 {<h3>{product.productName}</h3>}
-                {<h4>Price: ${product.pennies/100}</h4>}
+                {<h4>Price: ${product.pennies/100}.00</h4>}
                 {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
               </div>
             ))}
@@ -65,6 +67,7 @@ const Cart = ({ token, cartItems, setCartItems }) => {
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>
+          <button onClick={clearTotalCart}> Clear Cart </button>
         </div>
       </div>
     </>
