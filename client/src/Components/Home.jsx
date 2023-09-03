@@ -2,19 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails.jsx";
 
-const Home = ({ addToCart, cartItems, setCartItems }) => {
+const Home = ({ addToCart, cartItems, setCartItems, cartCounter, setCartCounter }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
-
-  // Event handler to update the search query
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  addToCart = (product) => {
-    setCartItems((prevItems) => [...prevItems, product]);
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    // setCartItems((prevItems) => [...prevItems, product]);
+    setCartCounter(cartCounter + 1);
+    console.log('Products in Cart', cartCounter);
   };
 
   useEffect(() => {
@@ -31,8 +32,8 @@ const Home = ({ addToCart, cartItems, setCartItems }) => {
   }, []);
 
   useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+    console.log('Products in Cart', cartCounter);
+  }, [cartCounter]);
 
   return (
     <div className="products-container">
@@ -55,7 +56,7 @@ const Home = ({ addToCart, cartItems, setCartItems }) => {
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>
             <h3>Stock: {product.stock}</h3>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
             <button onClick={() => navigate(`/products/${product.id}`)}>View Product Details</button>
             <button onClick={() => handleProductsDelete(product.id)}>
               Delete

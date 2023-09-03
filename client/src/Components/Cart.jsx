@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = ({ token, cartItems, setCartItems }) => {
+const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   
   const fetchCartItems = async () => {
@@ -40,10 +40,12 @@ const Cart = ({ token, cartItems, setCartItems }) => {
       (product) => product.id !== productToRemove.id
     );
     setCartItems(updatedCart); // Update the parent component's state as well
+    calculateTotalPrice(updatedCart);
   };
 
   const clearTotalCart = () => {
     setCartItems([]);
+    calculateTotalPrice([]);
   }
 
   return (
@@ -67,6 +69,9 @@ const Cart = ({ token, cartItems, setCartItems }) => {
         </section>
         {cartItems.length > 0 && (
           <div className='total'>
+            <div className='cart-counter'>
+              <span className='cart-count'>Cart Total: {cartCounter}</span>
+            </div>
           <h4>Total Price: ${totalPrice.toFixed(2)}</h4> 
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
