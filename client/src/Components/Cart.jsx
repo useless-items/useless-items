@@ -48,27 +48,32 @@ const Cart = ({ token, cartItems, setCartItems }) => {
 
   return (
     <>
-
       <div id='cart'>
         <section>
           <div className='container'>
-            {cartItems.map((product) => (
-              <div className='product' key={product.id}>
-                {console.log(product)}
-                {<h3>{product.productName}</h3>}
-                {<h4>Price: ${product.pennies/100}.00</h4>}
-                {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
-              </div>
-            ))}
+            {cartItems.length === 0 ? (
+              <h3>Sorry, your cart is empty!</h3>
+            ) : (
+              cartItems.map((product) => (
+                <div className='product' key={product.id}>
+                  {console.log(product)}
+                  {<h3>{product.productName}</h3>}
+                  {<h4>Price: ${product.pennies/100}.00</h4>}
+                  {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
+                </div>
+              ))
+            )}
           </div>
         </section>
-        <div className='total'>
+        {cartItems.length > 0 && (
+          <div className='total'>
           <h4>Total Price: ${totalPrice.toFixed(2)}</h4> 
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>
           <button onClick={clearTotalCart}> Clear Cart </button>
         </div>
+        )}
       </div>
     </>
   );
