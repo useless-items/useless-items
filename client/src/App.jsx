@@ -40,7 +40,7 @@ const App = () => {
       console.error('Error adding to cart:', error);
     };
   }
-
+  
   return (
     <>
       <div id="container">
