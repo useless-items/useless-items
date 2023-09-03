@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = ({ token, cartItems, setCartItems, addToCart }) => {
+const Cart = ({ token, cartItems, setCartItems }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   
-  useEffect(() => {
-    fetchCartItems();
-  }, [token]);
-
   const fetchCartItems = async () => {
     try {
       const response = await fetch('/api/cart', {
@@ -26,6 +22,10 @@ const Cart = ({ token, cartItems, setCartItems, addToCart }) => {
     }
   };
 
+  useEffect(() => {
+    fetchCartItems();
+  }, [token]);
+
   const calculateTotalPrice = (items) => {
 
     const total = items.reduce(
@@ -36,10 +36,9 @@ const Cart = ({ token, cartItems, setCartItems, addToCart }) => {
   };
 
   const removeFromCart = (productToRemove) => {
-    const updatedCart = cartProducts.filter(
+    const updatedCart = cartItems.filter(
       (product) => product.id !== productToRemove.id
     );
-    setCartProducts(updatedCart);
     setCartItems(updatedCart); // Update the parent component's state as well
   };
 
@@ -54,10 +53,9 @@ const Cart = ({ token, cartItems, setCartItems, addToCart }) => {
             {cartItems.map((product) => (
               <div className='product' key={product.id}>
                 {console.log(product)}
-                {/* {<h1>{product.productName}</h1>} */}
-                {/* <h3>{product.productName}</h3>
-                {product.price && <h4>Price: ${product.price}</h4>}
-                {product && <button onClick={() => removeFromCart(product)}>Remove from Cart</button>} */}
+                {<h3>{product.productName}</h3>}
+                {<h4>Price: ${product.pennies/100}</h4>}
+                {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
               </div>
             ))}
           </div>
