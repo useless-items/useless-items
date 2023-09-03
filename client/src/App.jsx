@@ -66,7 +66,7 @@ const App = () => {
         </div>
         <div id="main-section">
           <Routes>
-            <Route path="/" element={<Home addToCart={addToCart} />} />
+            <Route path="/" element={<Home addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />} />
             <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
             <Route path="/cart" element={<Cart token={token} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />} />
             <Route path="/products/:id" element={<ProductDetails />} />
