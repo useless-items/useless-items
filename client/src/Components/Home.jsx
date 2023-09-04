@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails.jsx";
 
-const Home = ({ addToCart, cartItems, setCartItems, cartCounter, setCartCounter }) => {
+const Home = ({ addToCart, cartCounter, setCartCounter }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const Home = ({ addToCart, cartItems, setCartItems, cartCounter, setCartCounter 
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    // setCartItems((prevItems) => [...prevItems, product]);
     setCartCounter(cartCounter + 1);
-    console.log('Products in Cart', cartCounter);
   };
 
   useEffect(() => {
@@ -51,7 +49,7 @@ const Home = ({ addToCart, cartItems, setCartItems, cartCounter, setCartCounter 
         {allProducts.map((product) => (
           <div key={product.id} className="product-box">
             <h1>{product.productName}</h1>
-            <h3>Price: {product.pennies}</h3>
+            <h3>Price: ${product.pennies/100}.00</h3>
             <h3>Description: {product.description}</h3>
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>

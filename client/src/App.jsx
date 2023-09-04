@@ -32,9 +32,14 @@ const App = () => {
       });
 
       if (response.ok) {
+        const updatedCartItems = [...cartItems, product];
         setCartItems([...cartItems, product]);
         setCartCounter(cartCounter + 1);
-        console.log('Item added to cart successfully');
+        const total = updatedCartItems.reduce((accumulator, item) => {
+          return accumulator + item.pennies;
+        }, 0);
+        const totalPrice = total / 100;
+        console.log('Total Price:', totalPrice);
       } else {
         console.error('Error adding to cart');
       }

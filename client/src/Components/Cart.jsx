@@ -3,7 +3,19 @@ import { Link } from 'react-router-dom';
 
 const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
   const [totalPrice, setTotalPrice] = useState(0);
-  
+
+    const calculateTotalPrice = () => {
+      const total = cartItems.reduce(
+        (accumulator, product) => {
+          return accumulator + product.pennies
+        },0);
+      setTotalPrice(total/100);
+    };
+
+    useEffect(() => {
+      calculateTotalPrice(cartItems);
+    }, [cartItems]);
+    
   const fetchCartItems = async () => {
     try {
       const response = await fetch('/api/cart', {
@@ -25,14 +37,6 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
   useEffect(() => {
     fetchCartItems();
   }, [token]);
-
-  const calculateTotalPrice = (items) => {
-    const total = items.reduce(
-      (accumulator, product) => {
-        return accumulator + product.pennies
-      },0);
-    setTotalPrice(total/100);
-  };
 
   const removeFromCart = (productToRemove) => {
     const updatedCart = cartItems.filter(
@@ -57,7 +61,6 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
             ) : (
               cartItems.map((product) => (
                 <div className='product' key={product.id}>
-                  {console.log(product)}
                   {<h3>{product.productName}</h3>}
                   {<h4>Price: ${product.pennies/100}.00</h4>}
                   {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
