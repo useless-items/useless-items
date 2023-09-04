@@ -33,7 +33,6 @@ const App = () => {
 
       if (response.ok) {
         setCartItems([...cartItems, product]);
-        calculateTotalPrice([...cartItems, product]);
         setCartCounter(cartCounter + 1);
         console.log('Item added to cart successfully');
       } else {

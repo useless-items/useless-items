@@ -27,7 +27,6 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
   }, [token]);
 
   const calculateTotalPrice = (items) => {
-
     const total = items.reduce(
       (accumulator, product) => {
         return accumulator + product.pennies
