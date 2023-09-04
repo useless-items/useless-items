@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import '../index.css';
 
-const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
+const Cart = ({ token, cartItems, setCartItems, cartCounter, setCartCounter }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
     const calculateTotalPrice = () => {
@@ -13,9 +14,10 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
     };
 
     useEffect(() => {
-      calculateTotalPrice(cartItems);
+      calculateTotalPrice();
+      setCartCounter(cartItems.length);
     }, [cartItems]);
-    
+
   const fetchCartItems = async () => {
     try {
       const response = await fetch('/api/cart', {
@@ -42,13 +44,13 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
     const updatedCart = cartItems.filter(
       (product) => product.id !== productToRemove.id
     );
-    setCartItems(updatedCart); // Update the parent component's state as well
-    calculateTotalPrice(updatedCart);
+    setCartItems(updatedCart);
+    // calculateTotalPrice(updatedCart);
   };
 
   const clearTotalCart = () => {
     setCartItems([]);
-    calculateTotalPrice([]);
+    // calculateTotalPrice([]);
   }
 
   return (
@@ -60,7 +62,7 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter }) => {
               <h3>Sorry, your cart is empty!</h3>
             ) : (
               cartItems.map((product) => (
-                <div className='product' key={product.id}>
+                <div className='cart-product clearfix' key={product.id}>
                   {<h3>{product.productName}</h3>}
                   {<h4>Price: ${product.pennies/100}.00</h4>}
                   {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}

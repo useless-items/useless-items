@@ -76,7 +76,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} cartCounter={cartCounter} setCartCounter={setCartCounter}/>} />
             <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId}/>} />
-            <Route path="/cart" element={<Cart token={token} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} cartCounter={cartCounter} />} />
+            <Route path="/cart" element={<Cart token={token} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} cartCounter={cartCounter} setCartCounter={setCartCounter}/>} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path="/userportal" element={<UserPortal token={token} userId={userId}/>}/>
