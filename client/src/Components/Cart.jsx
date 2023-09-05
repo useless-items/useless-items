@@ -62,7 +62,7 @@ const Cart = ({ token, cartItems, setCartItems, cartCounter, setCartCounter }) =
               <h3>Sorry, your cart is empty!</h3>
             ) : (
               cartItems.map((product) => (
-                <div className='cart-product clearfix' key={product.id}>
+                <div className='cart-product' key={product.id}>
                   {<h3>{product.productName}</h3>}
                   {<h4>Price: ${product.pennies/100}.00</h4>}
                   {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}

@@ -184,8 +184,7 @@ input[type="text"] {
     clear: both;
   }
 
-.clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
-}
+  div > #main-section {
+    background-color: lightgray;
+  }
+
