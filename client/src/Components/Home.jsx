@@ -76,7 +76,7 @@ const Home = ({ addToCart: addToCartProp }) => {
         {allProducts.map((product) => (
           <div key={product.id} className="product-box">
             <h1>{product.productName}</h1>
-            <h3>Price: {product.pennies}</h3>
+            <h3> ${(product.pennies / 100).toFixed(2)}</h3>
             <h3>Description: {product.description}</h3>
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>
