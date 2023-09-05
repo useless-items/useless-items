@@ -184,7 +184,10 @@ input[type="text"] {
     clear: both;
   }
 
-  div > #main-section {
-    background-color: lightgray;
-  }
+#portalfont {
+    color: lightgray;
+}
 
+#userportal {
+    background: linear-gradient(to bottom, lightgray, darkslategray);
+}
