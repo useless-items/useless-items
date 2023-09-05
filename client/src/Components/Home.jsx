@@ -51,7 +51,7 @@ const Home = ({ addToCart, cartCounter, setCartCounter }) => {
             <h1>{product.productName}</h1>
             <h3> ${(product.pennies / 100).toFixed(2)}</h3>
             <h3>Description: {product.description}</h3>
-            <h3>{product.productImgUrl}</h3>
+            <img src={products.productImgUrl} />
             <h3>Rating: {product.productRating}</h3>
             <h3>Stock: {product.stock}</h3>
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
