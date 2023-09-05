@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import '../index.css';
 
-const Cart = ({ token }) => {
-  const [cartItems, setCartItems] = useState([]);
+const Cart = ({ token, cartItems, setCartItems, cartCounter, setCartCounter }) => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product
 
-  useEffect(() => {
-    fetchCartItems();
-  }, [token]);
+    const calculateTotalPrice = () => {
+      const total = cartItems.reduce(
+        (accumulator, product) => {
+          return accumulator + product.pennies
+        },0);
+      setTotalPrice(total/100);
+    };
+
+    useEffect(() => {
+      calculateTotalPrice();
+      setCartCounter(cartItems.length);
+    }, [cartItems]);
 
   const fetchCartItems = async () => {
     try {
@@ -19,7 +27,6 @@ const Cart = ({ token }) => {
       });
       if (response.ok) {
         const cartItems = await response.json();
-        setCartItems(cartItems);
         calculateTotalPrice(cartItems);
       } else {
         console.error('Failed to fetch cart items');
@@ -29,64 +36,53 @@ const Cart = ({ token }) => {
     }
   };
 
-  const calculateTotalPrice = (items) => {
+  useEffect(() => {
+    fetchCartItems();
+  }, [token]);
 
-   
-
-    const total = items.reduce(
-      (accumulator, product) => {
-        return accumulator + product.pennies
-      },
-      0
+  const removeFromCart = (productToRemove) => {
+    const updatedCart = cartItems.filter(
+      (product) => product.id !== productToRemove.id
     );
-    setTotalPrice(total/100);
-
+    setCartItems(updatedCart);
+    // calculateTotalPrice(updatedCart);
   };
 
-  const addToCart = async () => {
-    try {
-      if (selectedProduct) {
-        const response = await fetch('/api/cart', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(selectedProduct), // Use selectedProduct
-        });
-
-        if (response.ok) {
-          await fetchCartItems();
-        } else {
-          console.error('Failed to add item to cart');
-        }
-      }
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
-    }
-  };
+  const clearTotalCart = () => {
+    setCartItems([]);
+    // calculateTotalPrice([]);
+  }
 
   return (
     <>
       <div id='cart'>
         <section>
           <div className='container'>
-            {cartItems && cartItems.map((product) => (
-              <div className='product' key={product.id}>
-                <h3>{product.productName}</h3>
-                <h4>Price: ${product.price}</h4>
-              </div>
-            ))}
+            {cartItems.length === 0 ? (
+              <h3>Sorry, your cart is empty!</h3>
+            ) : (
+              cartItems.map((product) => (
+                <div className='cart-product' key={product.id}>
+                  {<h3>{product.productName}</h3>}
+                  {<h4>Price: ${product.pennies/100}.00</h4>}
+                  {<button onClick={() => removeFromCart(product)}>Remove from Cart</button>}
+                </div>
+              ))
+            )}
           </div>
         </section>
-        <div className='total'>
-          <h4>Total Price: ${totalPrice}</h4>
-          <button onClick={addToCart}>Add to Cart</button>
-
+        {cartItems.length > 0 && (
+          <div className='total'>
+            <div className='cart-counter'>
+              <span className='cart-count'>Cart Total: {cartCounter}</span>
+            </div>
+          <h4>Total Price: ${totalPrice.toFixed(2)}</h4> 
           <Link to='/checkout' className='linkstyle'>
             <button>Check Out</button>
           </Link>
+          <button onClick={clearTotalCart}> Clear Cart </button>
         </div>
+        )}
       </div>
     </>
   );

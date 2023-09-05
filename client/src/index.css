@@ -140,7 +140,7 @@ input[type="text"] {
 
 .search-bar {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .products {
@@ -158,3 +158,33 @@ input[type="text"] {
     background: rgba(211, 211, 211, 0.48);
 
 }
+
+.cart-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    border: #333 2px solid;
+}
+
+.cart-product h3,
+.cart-product h4,
+.cart-product button {
+  margin-right: 25px; 
+}
+
+.cart-product button {
+    margin: 10px 5px
+}
+
+.cart-total {
+    clear: both;
+  }
+
+  div > #main-section {
+    background-color: lightgray;
+  }
+

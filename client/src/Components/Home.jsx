@@ -2,51 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails.jsx";
 
-const Home = ({ addToCart: addToCartProp }) => {
+const Home = ({ addToCart, cartCounter, setCartCounter }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState([]);
-  // Event handler to update the search query
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-
-  const addToCart = async (product) => {
-    try {
-      const response = await fetch("/api/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          productId: product.id,
-          quantity: 1,
-          pennies: product.pennies,
-          shoppingCartId: product.id,
-        }),
-      });
-
-      if (response.ok) {
-        setCartItems([product, ...cartItems]);
-        console.log('Item added to cart successfully');
-      } else {
-        console.error('Error adding to cart');
-      }
-    } catch (error){
-      console.error('Error adding to cart:', error);
-    };
-  }
-
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setCartCounter(cartCounter + 1);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const result = await fetch('/api/products');
         const data = await result.json();
-        console.log(data);
         setAllProducts(data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -56,8 +30,8 @@ const Home = ({ addToCart: addToCartProp }) => {
   }, []);
 
   useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+    console.log('Products in Cart', cartCounter);
+  }, [cartCounter]);
 
   return (
     <div className="products-container">
@@ -71,7 +45,6 @@ const Home = ({ addToCart: addToCartProp }) => {
         />
       </div>
 
-
       <div className="products">
         {allProducts.map((product) => (
           <div key={product.id} className="product-box">
@@ -81,7 +54,7 @@ const Home = ({ addToCart: addToCartProp }) => {
             <h3>{product.productImgUrl}</h3>
             <h3>Rating: {product.productRating}</h3>
             <h3>Stock: {product.stock}</h3>
-            <button onClick={() => addToCart(products)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
             <button onClick={() => navigate(`/products/${product.id}`)}>View Product Details</button>
             <button onClick={() => handleProductsDelete(product.id)}>
               Delete
