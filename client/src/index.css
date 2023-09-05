@@ -125,7 +125,7 @@ input[type="text"] {
     align-items: center;
     padding: 20px;
     height: 100vh;
-    margin-top: 375px;
+    margin-top: 500px;
 }
 
 .product-box {
@@ -149,8 +149,10 @@ input[type="text"] {
     gap: 20px;
     justify-content: center;
     align-content: center;
+    margin-top: 750px;
     padding: 20px;
     width: 100%;
+    height: 100%;
 }
 
 .product-details {
@@ -186,13 +188,24 @@ input[type="text"] {
 
 #portalfont {
     color: lightgray;
+    text-align: center;
+}
+
+#portalbutton {
+    display: block;
+    margin: auto;
 }
 
 #userportal {
     background: linear-gradient(to bottom, lightgray, darkslategray);
+    background: rgba(211, 211, 211, 0.48);
+    border: #333 2px solid;
+    
 }
 
 img{
+    display: block;
+    margin: 0 auto;
     height: 300px;
-    width: 300px;
+    width: 400px;
 }
