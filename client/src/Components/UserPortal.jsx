@@ -87,14 +87,14 @@ const handleProductForm = () => {
   
 return (
   <>
-    <h1>User Portal</h1>
+    <h1 id="portalfont">User Portal</h1>
     <button onClick={handleProductForm}>Post Product</button>
     {isProductFormOpen && <ProductForm handleProductSubmit={handleProductSubmit} />}
     {allProducts.map((product) => {
       const isUserProduct = product.user.id === userId; 
       console.log('Is User Product:', isUserProduct);
       return (
-        <div key={product.id}>
+        <div key={product.id} id="userportal">
           <h1>{product.productName}</h1>
           <h3>Price: {product.pennies}</h3>
           <h3>Description: {product.description}</h3>
